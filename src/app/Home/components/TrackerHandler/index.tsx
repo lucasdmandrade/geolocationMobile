@@ -2,6 +2,7 @@ import React, { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { StyleSheet, Switch, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import SquareContainer from "../../../../components/SquareContainer";
+import { colors, opacity } from "../../../../styles/colors";
 
 const timestampOptions = [10, 5, 3, 1];
 
@@ -13,8 +14,11 @@ const TrackerHandler: FC = () => {
     () =>
       timestampOptions.map((timestampOption, key) =>
         key === squareSelectedIndex
-          ? { background: "#dfdfdf", border: "green" }
-          : { background: "transparent", border: "#8b8b8b" }
+          ? {
+              background: colors.ligthGreen + opacity[10],
+              border: colors.ligthGreen,
+            }
+          : { background: "transparent", border: colors.gray }
       ),
     [timestampOptions, squareSelectedIndex]
   );
@@ -36,8 +40,8 @@ const TrackerHandler: FC = () => {
           <Switch
             value={isActive}
             onChange={toggleSwitch}
-            trackColor={{ false: "#bebebe", true: "#bebebe" }}
-            thumbColor={isActive ? "green" : "#f4f3f4"}
+            trackColor={{ false: colors.smoklyWhite, true: colors.smoklyWhite }}
+            thumbColor={isActive ? colors.ligthGreen : colors.ligtherGray}
           />
         </View>
       </View>
@@ -83,9 +87,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   timestampContainer: {
-    padding: 24,
+    paddingHorizontal: 24,
   },
   selectorContainer: {
     flexDirection: "row",
+    justifyContent: "space-between",
   },
 });

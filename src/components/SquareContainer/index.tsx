@@ -1,5 +1,6 @@
 import { FC, useMemo } from "react";
 import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
+import { OwnProps } from "./types";
 
 const SquareContainer: FC<OwnProps> = ({
   children,
@@ -21,8 +22,8 @@ const styles = StyleSheet.create({
   squareContainer: {
     alignItems: "center",
     justifyContent: "center",
-    width: 50,
-    height: 50,
+    width: 70,
+    height: 70,
     borderRadius: 5,
     borderWidth: 1,
   },

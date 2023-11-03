@@ -1,9 +1,9 @@
-interface SquareColors {
+export interface SquareColors {
   background?: string;
   border?: string;
 }
 
-interface OwnProps {
+export interface OwnProps {
   children: JSX.Element;
   colors?: SquareColors;
 }

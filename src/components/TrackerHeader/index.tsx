@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { colors } from "../../styles/colors";
 export default function Page() {
   return (
     <View style={styles.container}>
@@ -21,6 +22,6 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 16,
-    color: "green",
+    color: colors.ligthGreen,
   },
 });
