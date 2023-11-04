@@ -6,7 +6,9 @@ import { colors } from "../../styles/colors";
 const Layout = () => (
   <>
     <View style={styles.container}>
-      <Text style={styles.goBackTitle}>Voltar</Text>
+      <Link style={styles.goBackTitle} href="/Home">
+        Voltar
+      </Link>
 
       <Link style={styles.title} href="/PackagesList">
         Status

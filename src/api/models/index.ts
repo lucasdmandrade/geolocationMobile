@@ -1,7 +1,11 @@
-interface LocationPoint {
+export interface LocationPoint {
   id: string;
   latitude: number;
   longitude: number;
   speed: number;
-  time: string;
+  time: Date;
+}
+
+export interface AllPackagesKeys {
+  keys: string[];
 }

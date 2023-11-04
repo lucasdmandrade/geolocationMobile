@@ -1,20 +1,30 @@
-import { Button, FlatList } from "react-native";
-import Package from "../Package";
 import { useCallback, useEffect, useState } from "react";
-import { getAllPackages, newPoint } from "../../../../api/packages";
+import { Button, FlatList } from "react-native";
 import * as Location from "expo-location";
+import Package from "../Package";
+import { getAllPackages, getPackage, newPoint } from "../../../../api/packages";
+import { LocationPoint } from "../../../../api/models";
 
 const PackageList = () => {
-  const [packages, setPackages] = useState([]);
-  const [location, setLocation] = useState();
+  const [packages, setPackages] = useState<LocationPoint[]>([]);
+  const [location, setLocation] = useState<Location.LocationObject>();
 
   const fetchPackages = useCallback(async () => {
-    const teste = await getAllPackages();
+    const allPackages = await getAllPackages();
 
-    console.log("teste: ", teste);
+    if (!allPackages?.keys.length) return;
+
+    Promise.all(allPackages.keys.map((PackageKeys) => getPackage(PackageKeys)))
+      .then((value: LocationPoint[]) => setPackages(value))
+      .catch((e) => console.log("Promise.all getPackage error: ", e));
   }, []);
 
-  const renderItem = useCallback(() => <Package />, []);
+  const renderItem = useCallback(
+    ({ item }: { item: { points: LocationPoint } }) => (
+      <Package packageId={item.points.id} time={item.points.time} />
+    ),
+    []
+  );
 
   useEffect(() => {
     (async () => {
@@ -28,7 +38,7 @@ const PackageList = () => {
       setLocation(location);
       console.log("location: ", location);
     })();
-  }, []);
+  }, [Location]);
 
   useEffect(() => {
     fetchPackages();
@@ -36,19 +46,9 @@ const PackageList = () => {
 
   return (
     <>
-      <FlatList data={[{}, {}]} renderItem={renderItem} />
-      <Button
-        title="Teste"
-        onPress={() =>
-          newPoint({
-            id: "1",
-            latitude: 1,
-            longitude: 1,
-            speed: 1,
-            time: new Date(),
-          })
-        }
-      />
+      <FlatList data={packages} renderItem={renderItem} />
+
+      <Button title="Teste" onPress={() => newPoint(location)} />
     </>
   );
 };

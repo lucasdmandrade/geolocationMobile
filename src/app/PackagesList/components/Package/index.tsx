@@ -1,19 +1,30 @@
 import { FC } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const Package: FC<OwnProps> = ({}) => (
-  <View style={styles.container}>
-    <View>
-      <Text>Pacote ID: XXXXX</Text>
+const options: Intl.DateTimeFormatOptions = {
+  hour: "2-digit",
+  minute: "2-digit",
+};
 
-      <Text>Pendente sincronizar</Text>
-    </View>
+const Package: FC<OwnProps> = ({ packageId, time }) => {
+  return (
+    <View style={styles.container}>
+      <View style={{ flex: 1 }}>
+        <Text numberOfLines={1} ellipsizeMode="tail">
+          Pacote ID: {packageId}
+        </Text>
 
-    <View>
-      <Text>11:32</Text>
+        <Text>Pendente sincronizar</Text>
+      </View>
+
+      <View>
+        <Text>
+          {time ? new Date(time).toLocaleString("pt-BR", options) : ""}
+        </Text>
+      </View>
     </View>
-  </View>
-);
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
