@@ -1,15 +1,14 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { colors } from "../../styles/colors";
-export default function Page() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>My GPS - Tracking</Text>
 
-      <Text style={styles.subtitle}>online</Text>
-    </View>
-  );
-}
+const Home = () => (
+  <View style={styles.container}>
+    <Text style={styles.title}>My GPS - Tracking</Text>
+
+    <Text style={styles.subtitle}>online</Text>
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -25,3 +24,8 @@ const styles = StyleSheet.create({
     color: colors.ligthGreen,
   },
 });
+
+export default Home;
+function defineTask(BACKGROUND_FETCH_TASK: any, arg1: () => Promise<any>) {
+  throw new Error("Function not implemented.");
+}
