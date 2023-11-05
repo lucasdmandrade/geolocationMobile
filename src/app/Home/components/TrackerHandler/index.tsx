@@ -17,37 +17,23 @@ import {
   startLocationUpdatesAsync,
   stopLocationUpdatesAsync,
 } from "expo-location";
+import { getNetworkStateAsync } from "expo-network";
+import {
+  requestPermissions,
+  startUpdateLocation,
+  stopUpdateLocation,
+} from "../../../../services/backgroundTasks/updateLocation";
 
 const timestampOptions = [10, 5, 3, 1];
-
-const UPDATE_LOCATION_TASK = "Update_Location";
-
-defineTask(UPDATE_LOCATION_TASK, async ({ error, data }) => {
-  console.log("useEffect getStatusAsync: ", await getStatusAsync());
-  Alert.alert("Aqui");
-
-  const now = Date.now();
-
-  console.log(
-    `Got background fetch call at date: ${new Date(now).toISOString()}`
-  );
-
-  if (error) {
-    console.log(error);
-    return;
-  }
-
-  if (data) {
-    const { locations } = data;
-    console.log("data locations", locations);
-  }
-
-  return BackgroundFetchResult.NewData;
-});
 
 const TrackerHandler: FC = () => {
   const [isActive, setIsActive] = useState<boolean>();
   const [squareSelectedIndex, setSquareSelectedIndex] = useState(0);
+
+  const syncTimestamp = useMemo(
+    () => timestampOptions[squareSelectedIndex] * 1000,
+    [squareSelectedIndex]
+  );
 
   const squaresColors = useMemo(
     () =>
@@ -62,63 +48,23 @@ const TrackerHandler: FC = () => {
     [timestampOptions, squareSelectedIndex]
   );
 
-  const requestPermissions = async () => {
-    const { status: foregroundStatus } =
-      await requestForegroundPermissionsAsync();
+  const initUpdateLocation = useCallback(async () => {
+    await requestPermissions(syncTimestamp);
 
-    if (foregroundStatus === "granted") {
-      console.log("requestBackgroundPermissionsAsync");
-      const { status: backgroundStatus } =
-        await requestBackgroundPermissionsAsync();
+    setIsActive(true);
+  }, [setIsActive]);
 
-      console.log(backgroundStatus);
-
-      if (backgroundStatus === "granted") {
-        console.log("startLocationUpdatesAsync");
-
-        await startLocationUpdatesAsync(UPDATE_LOCATION_TASK, {
-          timeInterval: 10000,
-          accuracy: 6,
-          distanceInterval: 0,
-        });
-      }
-    }
-  };
-
-  const toggleSwitch = () => {
-    console.log(isActive);
-
-    if (isActive) {
-      console.log("unregisterTaskAsync: ", isActive);
-      stopLocationUpdatesAsync(UPDATE_LOCATION_TASK);
-    } else {
-      console.log("registerTaskAsync: ", isActive);
-      startLocationUpdatesAsync(UPDATE_LOCATION_TASK, {
-        timeInterval: 10000,
-        accuracy: 6,
-        distanceInterval: 0,
-      });
-    }
+  const toggleSwitch = useCallback(async () => {
+    isActive
+      ? await stopUpdateLocation()
+      : await startUpdateLocation(syncTimestamp);
 
     setIsActive((previousState) => !previousState);
-  };
+  }, [setIsActive, isActive]);
 
   useEffect(() => {
-    requestPermissions();
-  }, []);
-
-  useEffect(() => {
-    checkStatusAsync();
-  }, []);
-
-  const checkStatusAsync = async () => {
-    const status = await getStatusAsync();
-    const isRegistered = await isTaskRegisteredAsync(UPDATE_LOCATION_TASK);
-
-    console.log("status: ", status);
-    console.log("isRegistered: ", isRegistered);
-    setIsActive(isRegistered);
-  };
+    initUpdateLocation();
+  }, [initUpdateLocation]);
 
   return (
     <>
@@ -144,6 +90,7 @@ const TrackerHandler: FC = () => {
         <View style={styles.selectorContainer}>
           {timestampOptions.map((timestampOption, key) => (
             <TouchableOpacity
+              disabled={isActive}
               key={`touchable-square-container-${key}`}
               onPress={() => setSquareSelectedIndex(key)}
             >
