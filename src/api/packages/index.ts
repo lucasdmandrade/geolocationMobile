@@ -26,14 +26,13 @@ export const getPackage = async (id: string) => {
 };
 
 export const newPoint = async (locationPoint: LocationPoint) => {
-  const id = uuidv4();
   try {
-    const response = await api.post(`/points/${id}`, {
-      id,
+    const response = await api.post(`/points/${locationPoint.id}`, {
+      id: locationPoint.id,
       latitude: locationPoint.latitude,
       longitude: locationPoint.longitude,
       speed: locationPoint.speed,
-      time: new Date(),
+      time: locationPoint.time,
     });
 
     console.log("newPoint response: ", response.data);

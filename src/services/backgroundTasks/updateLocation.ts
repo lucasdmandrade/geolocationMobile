@@ -7,6 +7,8 @@ import {
 } from "expo-location";
 import { getNetworkStateAsync } from "expo-network";
 import { defineTask } from "expo-task-manager";
+import { v4 as uuidv4 } from "uuid";
+import { newPoint } from "../../api/packages";
 
 export const UPDATE_LOCATION_TASK = "Update_Location";
 
@@ -48,6 +50,16 @@ defineTask<UpdateLocation>(UPDATE_LOCATION_TASK, async ({ error, data }) => {
   if (data) {
     const { locations } = data;
     console.log("data locations", locations);
+
+    const point = {
+      id: uuidv4(),
+      latitude: locations[0].coords.latitude,
+      longitude: locations[0].coords.longitude,
+      speed: locations[0].coords.speed,
+      time: new Date(),
+    };
+
+    if (isConnected) return; //await newPoint(point);
   }
 
   return BackgroundFetchResult.NewData;
