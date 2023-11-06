@@ -15,8 +15,6 @@ const PackageList = () => {
   const [location, setLocation] = useState<Location.LocationObject>();
 
   const orderedPackages: OrderedPackages[] = useMemo(() => {
-    console.log("storagePackages: ", storagePackages.length);
-    console.log("synchronizedPackages: ", synchronizedPackages.length);
     const storageWithIsSynchronized = storagePackages?.map((pkg) => ({
       ...pkg,
       isSynchronized: false,
@@ -26,18 +24,15 @@ const PackageList = () => {
       isSynchronized: true,
     }));
 
-    // Combine os arrays com os novos campos isSynchronized
     const combinedPackages = [
       ...storageWithIsSynchronized,
       ...synchronizedWithIsSynchronized,
     ];
 
-    // Ordene os elementos pela data (supondo que a data esteja no campo 'time')
     combinedPackages.sort((a, b) => {
       const dateA = new Date(a.time);
       const dateB = new Date(b.time);
 
-      // Inverta a ordem da comparação para mostrar os pacotes mais recentes primeiro
       if (dateA < dateB) return 1;
       if (dateA > dateB) return -1;
       return 0;
@@ -96,13 +91,7 @@ const PackageList = () => {
     fetchStoragedPoints();
   }, []);
 
-  return (
-    <>
-      <FlatList data={orderedPackages} renderItem={renderItem} />
-
-      <Button title="Teste" onPress={() => newPoint(location)} />
-    </>
-  );
+  return <FlatList data={orderedPackages} renderItem={renderItem} />;
 };
 
 export default PackageList;
