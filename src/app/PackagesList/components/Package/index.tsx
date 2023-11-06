@@ -6,7 +6,7 @@ const options: Intl.DateTimeFormatOptions = {
   minute: "2-digit",
 };
 
-const Package: FC<OwnProps> = ({ packageId, time }) => {
+const Package: FC<OwnProps> = ({ packageId, time, isSynchronized }) => {
   return (
     <View style={styles.container}>
       <View style={{ flex: 1 }}>
@@ -14,7 +14,7 @@ const Package: FC<OwnProps> = ({ packageId, time }) => {
           Pacote ID: {packageId}
         </Text>
 
-        <Text>Pendente sincronizar</Text>
+        <Text>{isSynchronized ? "Sincronizado" : "Pendente sincronizar"}</Text>
       </View>
 
       <View>

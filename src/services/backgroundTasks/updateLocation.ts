@@ -9,6 +9,7 @@ import { getNetworkStateAsync } from "expo-network";
 import { defineTask } from "expo-task-manager";
 import { v4 as uuidv4 } from "uuid";
 import { newPoint } from "../../api/packages";
+import { getAllPoints, sendStoragedPoints, setPoint } from "../storage";
 
 export const UPDATE_LOCATION_TASK = "Update_Location";
 
@@ -30,26 +31,17 @@ export interface UpdateLocation {
 }
 
 defineTask<UpdateLocation>(UPDATE_LOCATION_TASK, async ({ error, data }) => {
-  console.log("useEffect getStatusAsync: ", await getStatusAsync());
-
   const now = Date.now();
 
-  console.log(
-    `Got background fetch call at date: ${new Date(now).toISOString()}`
-  );
-
   if (error) {
-    console.log(error);
+    console.log("defineTask error: ", error);
     return;
   }
 
   const isConnected = (await getNetworkStateAsync()).isConnected;
 
-  console.log("isConnected: ", isConnected);
-
   if (data) {
     const { locations } = data;
-    console.log("data locations", locations);
 
     const point = {
       id: uuidv4(),
@@ -59,7 +51,13 @@ defineTask<UpdateLocation>(UPDATE_LOCATION_TASK, async ({ error, data }) => {
       time: new Date(),
     };
 
-    if (isConnected) return; //await newPoint(point);
+    // if (isConnected) {
+    //   await sendStoragedPoints();
+
+    //   return await newPoint(point);
+    // }
+
+    //return await setPoint(point);
   }
 
   return BackgroundFetchResult.NewData;
@@ -86,8 +84,6 @@ export const requestPermissions = async (timeInterval: number) => {
       await requestBackgroundPermissionsAsync();
 
     if (backgroundStatus === "granted") {
-      console.log("startLocationUpdatesAsync");
-
       await startUpdateLocation(timeInterval);
     }
   }

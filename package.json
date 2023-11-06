@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@expo/html-elements": "^0.5.1",
+    "@react-native-async-storage/async-storage": "1.18.2",
     "axios": "^1.6.0",
     "expo": "~49.0.15",
     "expo-background-fetch": "~11.3.0",
