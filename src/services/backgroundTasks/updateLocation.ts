@@ -31,8 +31,6 @@ export interface UpdateLocation {
 }
 
 defineTask<UpdateLocation>(UPDATE_LOCATION_TASK, async ({ error, data }) => {
-  const now = Date.now();
-
   if (error) {
     console.log("defineTask error: ", error);
     return;
@@ -65,18 +63,15 @@ defineTask<UpdateLocation>(UPDATE_LOCATION_TASK, async ({ error, data }) => {
   return BackgroundFetchResult.NewData;
 });
 
-export const startUpdateLocation = async (timeInterval: number) => {
-  console.log(timeInterval);
+export const startUpdateLocation = async (timeInterval: number) =>
   await startLocationUpdatesAsync(UPDATE_LOCATION_TASK, {
     timeInterval: timeInterval,
     accuracy: 6,
     distanceInterval: 0,
   });
-};
 
-export const stopUpdateLocation = async () => {
+export const stopUpdateLocation = async () =>
   await stopLocationUpdatesAsync(UPDATE_LOCATION_TASK);
-};
 
 export const requestPermissions = async (timeInterval: number) => {
   const { status: foregroundStatus } =

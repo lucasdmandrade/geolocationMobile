@@ -3,26 +3,14 @@ import { Alert, StyleSheet, Switch, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import SquareContainer from "../../../../components/SquareContainer";
 import { colors, opacity } from "../../../../styles/colors";
+import { LocationProviderStatus } from "expo-location";
 import {
-  BackgroundFetchResult,
-  getStatusAsync,
-  registerTaskAsync,
-  unregisterTaskAsync,
-} from "expo-background-fetch";
-import { defineTask, isTaskRegisteredAsync } from "expo-task-manager";
-import {
-  Accuracy,
-  requestBackgroundPermissionsAsync,
-  requestForegroundPermissionsAsync,
-  startLocationUpdatesAsync,
-  stopLocationUpdatesAsync,
-} from "expo-location";
-import { getNetworkStateAsync } from "expo-network";
-import {
+  UPDATE_LOCATION_TASK,
   requestPermissions,
   startUpdateLocation,
   stopUpdateLocation,
 } from "../../../../services/backgroundTasks/updateLocation";
+import { getTaskOptionsAsync, isTaskRegisteredAsync } from "expo-task-manager";
 
 const timestampOptions = [10, 5, 3, 1];
 
@@ -51,7 +39,9 @@ const TrackerHandler: FC = () => {
   const initUpdateLocation = useCallback(async () => {
     await requestPermissions(syncTimestamp);
 
-    setIsActive(true);
+    const isTaskActive = await isTaskRegisteredAsync(UPDATE_LOCATION_TASK);
+
+    setIsActive(isTaskActive);
   }, [setIsActive, syncTimestamp]);
 
   const toggleSwitch = useCallback(async () => {
