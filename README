@@ -6,9 +6,9 @@ Bem-vindo ao guia do projeto Expo Go que combina TypeScript e AsyncStorage, alé
 
 Antes de começar, certifique-se de que o Expo CLI esteja instalado no seu sistema. Se não estiver, você pode instalá-lo com o seguinte comando:
 
-\`\`\`
+```
 npm install -g expo-cli
-\`\`\`
+```
 
 ## Configuração
 
@@ -16,30 +16,33 @@ npm install -g expo-cli
 
 Clone este repositório para o seu sistema executando o seguinte comando:
 
-\`\`\`
+```
 git clone https://seu-repositorio.git
 cd seu-repositorio
-\`\`\`
+```
 
 ### 2. Instale as Dependências
 
 Instale as dependências do projeto executando:
 
-\`\`\`
+```
 npm install
+
+```
 
 # ou com Yarn
 
+```
 yarn
-\`\`\`
+```
 
 ### 3. Inicialize o Projeto Expo GO
 
 Para começar, inicie o projeto Expo com o nome do seu projeto:
 
-\`\`\`
+```
 yarn start
-\`\`\`
+```
 
 Siga as instruções do Expo CLI para configurar o seu projeto.
 
@@ -55,9 +58,9 @@ Para lidar com tarefas em segundo plano, você pode usar a biblioteca \`expo-bac
 
 Para iniciar o projeto, utilize o seguinte comando:
 
-\`\`\`
+```
 expo start
-\`\`\`
+```
 
 Isso iniciará o servidor de desenvolvimento do Expo e abrirá a interface no seu navegador. A partir daí, você pode escolher executar o aplicativo no seu dispositivo físico ou em um emulador.
 
