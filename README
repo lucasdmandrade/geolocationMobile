@@ -1,5 +1,3 @@
-const readme = `
-
 # Projeto Expo Go com TypeScript e AsyncStorage
 
 Bem-vindo ao guia do projeto Expo Go que combina TypeScript e AsyncStorage, além de gerenciar permissões de localização e tarefas em segundo plano.
