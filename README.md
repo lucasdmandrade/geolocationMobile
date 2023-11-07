@@ -1,16 +1,8 @@
-# Projeto Expo Go com TypeScript e AsyncStorage
+# Projeto GeolocationMobile
 
-Bem-vindo ao guia do projeto Expo Go que combina TypeScript e AsyncStorage, além de gerenciar permissões de localização e tarefas em segundo plano.
+Bem-vindo ao guia do projeto Expo Go que combina Expo Go e TypeScript, além de usar local storage, background tasks, serviços de localização e ter as principais features cobertas por testes unitários usando Jest e a React Testing Library
 
-## Requisitos
-
-Node.js LTS release - Only Node.js LTS releases (even-numbered) are recommended
-
-```
-npm install -g expo-cli
-```
-
-## Configuração
+## Iniciando
 
 ### 1. Clone o Repositório
 
@@ -38,13 +30,13 @@ yarn
 
 ### 3. Inicialize o Projeto Expo GO
 
-Para começar, inicie o projeto Expo com o nome do seu projeto:
+Siga as instruções do Expo CLI para iniciar o projeto de acordo com o sistema operacional do seu dispositivo ou emulador.
 
 ```
 yarn start
 ```
 
-Siga as instruções do Expo CLI para configurar o seu projeto.
+**Lembre-se de estar com o backend rodando de forma local, o projeto esta apontando para callback do emulador**
 
 ### 7. Gerenciamento de Permissões de Localização
 
