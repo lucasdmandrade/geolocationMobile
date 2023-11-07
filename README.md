@@ -30,7 +30,7 @@ npm install
 
 ```
 
-# ou com Yarn
+#### ou com Yarn
 
 ```
 yarn
