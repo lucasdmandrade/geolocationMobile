@@ -38,7 +38,7 @@ yarn start
 
 > Lembre-se de que o backend deve estar em execução localmente, pois o projeto está apontando para o callback do emulador
 
-### 4. Gerenciamento de Permissões de Localização
+### 4. Gerenciamento de Permissões
 
 Certifique-se de que o seu dispositivo/emulador tenha as permissões de localização e backgroundTask liberadas. Isso é necessário devido ao uso das bibliotecas`expo-location expo-background-fetch expo-task-manager`.
 
