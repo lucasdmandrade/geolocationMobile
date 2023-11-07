@@ -7,6 +7,8 @@ export const getAllPackages = async () => {
   try {
     const response = await api.get<AllPackagesKeys>("/points");
 
+    console.log("RESPONSE: ", response);
+
     return response.data;
   } catch (error) {
     console.error("getAllPackages error: ", error);
