@@ -36,7 +36,7 @@ Siga as instruções do Expo CLI para iniciar o projeto de acordo com o sistema 
 yarn start
 ```
 
-**Lembre-se de estar com o backend rodando de forma local, o projeto esta apontando para callback do emulador**
+> Lembre-se de estar com o backend rodando de forma local, o projeto esta apontando para callback do emulador
 
 ### 7. Gerenciamento de Permissões de Localização
 
