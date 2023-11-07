@@ -36,25 +36,11 @@ Siga as instruções do Expo CLI para iniciar o projeto de acordo com o sistema 
 yarn start
 ```
 
-> Lembre-se de estar com o backend rodando de forma local, o projeto esta apontando para callback do emulador
+> Lembre-se de que o backend deve estar em execução localmente, pois o projeto está apontando para o callback do emulador
 
-### 7. Gerenciamento de Permissões de Localização
+### 4. Gerenciamento de Permissões de Localização
 
-Certifique-se de que o seu projeto esteja configurado para solicitar permissões de localização quando necessário. Isso geralmente envolve o uso da biblioteca `expo-location`.
-
-### 8. Lidando com Tarefas em Segundo Plano
-
-Para lidar com tarefas em segundo plano, você pode usar a biblioteca `expo-background-fetch`. Consulte a documentação do Expo para obter mais detalhes sobre como configurar tarefas em segundo plano no seu projeto.
-
-## Executando o Projeto
-
-Para iniciar o projeto, utilize o seguinte comando:
-
-```
-expo start
-```
-
-Isso iniciará o servidor de desenvolvimento do Expo e abrirá a interface no seu navegador. A partir daí, você pode escolher executar o aplicativo no seu dispositivo físico ou em um emulador.
+Certifique-se de que o seu dispositivo/emulador tenha as permissões de localização e backgroundTask liberadas. Isso é necessário devido ao uso das bibliotecas`expo-location expo-background-fetch expo-task-manager`.
 
 ## Licença
 
