@@ -17,7 +17,7 @@ npm install -g expo-cli
 Clone este repositório para o seu sistema executando o seguinte comando:
 
 ```
-git clone https://seu-repositorio.git
+git clone https://github.com/lucasdmandrade/geolocationMobile
 cd seu-repositorio
 ```
 
@@ -48,11 +48,11 @@ Siga as instruções do Expo CLI para configurar o seu projeto.
 
 ### 7. Gerenciamento de Permissões de Localização
 
-Certifique-se de que o seu projeto esteja configurado para solicitar permissões de localização quando necessário. Isso geralmente envolve o uso da biblioteca \`expo-location\`.
+Certifique-se de que o seu projeto esteja configurado para solicitar permissões de localização quando necessário. Isso geralmente envolve o uso da biblioteca `expo-location`.
 
 ### 8. Lidando com Tarefas em Segundo Plano
 
-Para lidar com tarefas em segundo plano, você pode usar a biblioteca \`expo-background-fetch\`. Consulte a documentação do Expo para obter mais detalhes sobre como configurar tarefas em segundo plano no seu projeto.
+Para lidar com tarefas em segundo plano, você pode usar a biblioteca `expo-background-fetch`. Consulte a documentação do Expo para obter mais detalhes sobre como configurar tarefas em segundo plano no seu projeto.
 
 ## Executando o Projeto
 
