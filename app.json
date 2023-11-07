@@ -19,7 +19,11 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.lucasdmandrade.geolocationmobile",
       "infoPlist": {
-        "UIBackgroundModes": ["location", "fetch"]
+        "uibackgroundmodes": [
+          "location",
+          "fetch"
+        ],
+        "nslocationalwaysusagedescription": "text"
       }
     },
     "android": {
