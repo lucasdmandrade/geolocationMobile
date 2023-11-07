@@ -7,11 +7,9 @@ export const getAllPackages = async () => {
   try {
     const response = await api.get<AllPackagesKeys>("/points");
 
-    console.log("RESPONSE: ", response);
-
     return response.data;
   } catch (error) {
-    console.error("getAllPackages error: ", error);
+    //console.error("getAllPackages error: ", error);
   }
 };
 
@@ -21,12 +19,11 @@ export const getPackage = async (id: string) => {
 
     return response.data;
   } catch (error) {
-    console.error("getPackage error: ", error);
+    //console.error("getPackage error: ", error);
   }
 };
 
 export const newPoint = async (locationPoint: LocationPoint) => {
-  console.log("newPoint: ", locationPoint);
   try {
     await api.post(`/points/${locationPoint.id}`, {
       id: locationPoint.id,
@@ -36,6 +33,6 @@ export const newPoint = async (locationPoint: LocationPoint) => {
       time: locationPoint.time,
     });
   } catch (error) {
-    console.error("newPoint error: ", error);
+    //console.error("newPoint error: ", error);
   }
 };

@@ -8,13 +8,29 @@ import axios from "axios";
 import { setPoint, getAllPoints, sendStoragedPoints } from "./";
 import { LocationPoint } from "../../api/models";
 
+interface StorageMockLocationPoint {
+  id: string;
+  latitude: number;
+  longitude: number;
+  speed: number;
+  time: string;
+}
+
 describe("Teste das funções relacionadas a AsyncStorage", () => {
-  const mockLocationPoint = {
+  const mockLocationPoint: LocationPoint = {
     id: "1",
     latitude: 123.456,
     longitude: 789.012,
     speed: 50,
     time: new Date("2023-11-07T01:33:11.438Z"),
+  };
+
+  const storageMockLocationPoint: StorageMockLocationPoint = {
+    id: "1",
+    latitude: 123.456,
+    longitude: 789.012,
+    speed: 50,
+    time: "2023-11-07T01:33:11.438Z",
   };
 
   let mock: MockAdapter;
@@ -24,11 +40,15 @@ describe("Teste das funções relacionadas a AsyncStorage", () => {
     mock = new MockAdapter(axios);
   });
 
+  afterAll(() => {
+    jest.restoreAllMocks();
+  });
+
   it("setPoint deve armazenar um ponto corretamente", async () => {
     await setPoint(mockLocationPoint);
     const storedValue = await AsyncStorage.getItem(mockLocationPoint.id);
 
-    expect(JSON.parse(storedValue)).toEqual(mockLocationPoint);
+    expect(JSON.parse(storedValue || "")).toEqual(storageMockLocationPoint);
   });
 
   it("getAllPoints deve retornar os pontos armazenados", async () => {
@@ -36,23 +56,16 @@ describe("Teste das funções relacionadas a AsyncStorage", () => {
     const points = await getAllPoints();
 
     expect(points).toHaveLength(1);
-    expect(points[0]).toEqual(mockLocationPoint);
+    expect(points[0]).toEqual(storageMockLocationPoint);
   });
 
   it("sendStoragedPoints deve enviar pontos e removê-los", async () => {
     await setPoint(mockLocationPoint);
     const spyMultiRemove = jest.spyOn(AsyncStorage, "multiRemove");
 
-    const locationPoint: LocationPoint = {
-      id: "package3",
-      latitude: 111.111,
-      longitude: 222.222,
-      speed: 30,
-      time: new Date(),
-    };
-
-    // Configura a expectativa de que uma solicitação POST será feita para uma URL específica e com os dados esperados
-    mock.onPost(`/points/${locationPoint.id}`, locationPoint).reply(200);
+    mock
+      .onPost(`/points/${mockLocationPoint.id}`, mockLocationPoint)
+      .reply(200);
 
     await sendStoragedPoints();
 

@@ -6,8 +6,6 @@ export const setPoint = async (point: LocationPoint) => {
   try {
     const value = JSON.stringify(point);
 
-    console.log("setPoint", value, typeof value);
-
     await AsyncStorage.setItem(point.id, value);
   } catch (e) {
     console.log("setPoint error: ", e);
