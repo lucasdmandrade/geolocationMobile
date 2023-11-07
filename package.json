@@ -4,6 +4,7 @@
   "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
+    "test": "npx jest --verbose=false",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web"
@@ -31,9 +32,16 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@babel/preset-typescript": "^7.23.2",
+    "@testing-library/jest-native": "^5.4.3",
+    "@testing-library/react-native": "^12.3.2",
+    "@types/axios-mock-adapter": "^1.10.0",
+    "@types/jest": "^29.5.7",
     "@types/react": "~18.2.14",
     "@types/react-native": "^0.72.5",
     "@types/uuid": "^9.0.6",
+    "axios-mock-adapter": "^1.22.0",
+    "babel-jest": "^29.7.0",
     "typescript": "^5.1.3"
   },
   "private": true

@@ -51,6 +51,8 @@ defineTask<UpdateLocation>(UPDATE_LOCATION_TASK, async ({ error, data }) => {
       time: new Date(),
     };
 
+    console.log(point);
+
     // if (isConnected) {
     //   await sendStoragedPoints();
 
@@ -64,6 +66,7 @@ defineTask<UpdateLocation>(UPDATE_LOCATION_TASK, async ({ error, data }) => {
 });
 
 export const startUpdateLocation = async (timeInterval: number) => {
+  console.log(timeInterval);
   await startLocationUpdatesAsync(UPDATE_LOCATION_TASK, {
     timeInterval: timeInterval,
     accuracy: 6,

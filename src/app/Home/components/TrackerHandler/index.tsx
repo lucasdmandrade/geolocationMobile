@@ -52,7 +52,7 @@ const TrackerHandler: FC = () => {
     await requestPermissions(syncTimestamp);
 
     setIsActive(true);
-  }, [setIsActive]);
+  }, [setIsActive, syncTimestamp]);
 
   const toggleSwitch = useCallback(async () => {
     isActive
@@ -60,11 +60,11 @@ const TrackerHandler: FC = () => {
       : await startUpdateLocation(syncTimestamp);
 
     setIsActive((previousState) => !previousState);
-  }, [setIsActive, isActive]);
+  }, [setIsActive, isActive, syncTimestamp]);
 
   useEffect(() => {
     initUpdateLocation();
-  }, [initUpdateLocation]);
+  }, []);
 
   return (
     <>
