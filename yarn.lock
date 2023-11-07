@@ -2069,6 +2069,15 @@
     pretty-format "^29.0.3"
     redent "^3.0.0"
 
+"@testing-library/react-native@^12.3.2":
+  version "12.3.2"
+  resolved "https://registry.yarnpkg.com/@testing-library/react-native/-/react-native-12.3.2.tgz#008ff0408bd51346d482688b18ee34bf72f32e09"
+  integrity sha512-S8ggbK5A8leTMp9ETiAMjUCMVdy7SHFH7566TLsF06sHEDqOB05ohQU28Qv0EQY6jr8P73qmQXUpWlPwnhJOUQ==
+  dependencies:
+    jest-matcher-utils "^29.7.0"
+    pretty-format "^29.7.0"
+    redent "^3.0.0"
+
 "@types/axios-mock-adapter@^1.10.0":
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/@types/axios-mock-adapter/-/axios-mock-adapter-1.10.0.tgz#2db4abb44e46923d2042ac554f1cd34ef4a62a7e"
