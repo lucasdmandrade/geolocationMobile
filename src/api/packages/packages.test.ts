@@ -55,6 +55,14 @@ describe("Testes das funções de API", () => {
     }
   });
 
+  it("getPackage deve retornar os dados corretos", async () => {
+    mock.onGet(`/points/${locationPoint.id}`).reply(200, locationPoint);
+
+    const result = await getPackage(locationPoint.id);
+
+    expect(result).toEqual(locationPointResponse);
+  });
+
   it("getPackage deve tratar erros corretamente", async () => {
     mock
       .onGet(`/points/${locationPoint.id}`)
