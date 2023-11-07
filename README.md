@@ -4,7 +4,7 @@ Bem-vindo ao guia do projeto Expo Go que combina TypeScript e AsyncStorage, alé
 
 ## Requisitos
 
-Antes de começar, certifique-se de que o Expo CLI esteja instalado no seu sistema. Se não estiver, você pode instalá-lo com o seguinte comando:
+Node.js LTS release - Only Node.js LTS releases (even-numbered) are recommended
 
 ```
 npm install -g expo-cli
