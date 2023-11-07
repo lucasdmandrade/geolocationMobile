@@ -48,6 +48,4 @@ Este projeto é distribuído sob a licença [MIT](LICENSE). Sinta-se à vontade 
 
 ---
 
-Este README serve como um guia detalhado para configurar o seu projeto Expo Go com TypeScript, AsyncStorage, permissões de localização e tarefas em segundo plano. Consulte a documentação oficial do Expo e das bibliotecas relevantes para obter informações adicionais sobre configuração e uso.
-
-Boa sorte com o seu projeto!
+Este README serve como um guia detalhado para executar este projeto. Para obter informações adicionais sobre configuração e uso, consulte a documentação oficial do Expo e das bibliotecas relevantes.
