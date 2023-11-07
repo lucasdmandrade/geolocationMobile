@@ -3,14 +3,13 @@ import { Alert, StyleSheet, Switch, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import SquareContainer from "../../../../components/SquareContainer";
 import { colors, opacity } from "../../../../styles/colors";
-import { LocationProviderStatus } from "expo-location";
 import {
   UPDATE_LOCATION_TASK,
   requestPermissions,
   startUpdateLocation,
   stopUpdateLocation,
 } from "../../../../services/backgroundTasks/updateLocation";
-import { getTaskOptionsAsync, isTaskRegisteredAsync } from "expo-task-manager";
+import { isTaskRegisteredAsync } from "expo-task-manager";
 
 const timestampOptions = [10, 5, 3, 1];
 
