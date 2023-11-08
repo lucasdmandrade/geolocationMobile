@@ -19,7 +19,6 @@ Instale as dependências do projeto executando:
 
 ```
 npm install
-
 ```
 
 #### ou com Yarn
@@ -41,6 +40,20 @@ yarn start
 ### 4. Gerenciamento de Permissões
 
 Certifique-se de que o seu dispositivo/emulador tenha as permissões de localização e backgroundTask liberadas. Isso é necessário devido ao uso das bibliotecas`expo-location expo-background-fetch expo-task-manager`.
+
+### 5. Testes
+
+Criei comandos para facilitar o uso dos testes, rode os teste executando:
+
+```
+yarn test
+```
+
+E atualize os snapshots com o comando:
+
+```
+yarn test-snapshot
+```
 
 ## Licença
 
