@@ -6,25 +6,21 @@ const options: Intl.DateTimeFormatOptions = {
   minute: "2-digit",
 };
 
-const Package: FC<OwnProps> = ({ packageId, time, isSynchronized }) => {
-  return (
-    <View style={styles.container}>
-      <View style={{ flex: 1 }}>
-        <Text numberOfLines={1} ellipsizeMode="tail">
-          Pacote ID: {packageId}
-        </Text>
+const Package: FC<OwnProps> = ({ packageId, time, isSynchronized }) => (
+  <View style={styles.container}>
+    <View style={{ flex: 1 }}>
+      <Text numberOfLines={1} ellipsizeMode="tail">
+        Pacote ID: {packageId}
+      </Text>
 
-        <Text>{isSynchronized ? "Sincronizado" : "Pendente sincronizar"}</Text>
-      </View>
-
-      <View>
-        <Text>
-          {time ? new Date(time).toLocaleString("pt-BR", options) : ""}
-        </Text>
-      </View>
+      <Text>{isSynchronized ? "Sincronizado" : "Pendente sincronizar"}</Text>
     </View>
-  );
-};
+
+    <View>
+      <Text>{time ? new Date(time).toLocaleString("pt-BR", options) : ""}</Text>
+    </View>
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {

@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Button, FlatList } from "react-native";
-import * as Location from "expo-location";
+import { FlatList } from "react-native";
 import Package from "../Package";
 import { getAllPackages, getPackage, newPoint } from "../../../../api/packages";
 import { LocationPoint } from "../../../../api/models";
@@ -12,13 +11,13 @@ const PackageList = () => {
     LocationPoint[]
   >([]);
   const [storagePackages, setStoragePackages] = useState<LocationPoint[]>([]);
-  const [location, setLocation] = useState<Location.LocationObject>();
 
   const orderedPackages: OrderedPackages[] = useMemo(() => {
     const storageWithIsSynchronized = storagePackages?.map((pkg) => ({
       ...pkg,
       isSynchronized: false,
     }));
+
     const synchronizedWithIsSynchronized = synchronizedPackages?.map((pkg) => ({
       ...pkg,
       isSynchronized: true,
@@ -35,6 +34,7 @@ const PackageList = () => {
 
       if (dateA < dateB) return 1;
       if (dateA > dateB) return -1;
+
       return 0;
     });
 
@@ -74,17 +74,6 @@ const PackageList = () => {
 
     setStoragePackages(allPoints);
   }, [setStoragePackages]);
-
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") return;
-
-      const location = await Location.getCurrentPositionAsync({});
-
-      setLocation(location);
-    })();
-  }, [Location]);
 
   useEffect(() => {
     fetchPackages();

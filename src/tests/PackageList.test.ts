@@ -1,9 +1,9 @@
 import MockAdapter from "axios-mock-adapter";
 import { render } from "@testing-library/react-native";
-import axios from "../../services/axios";
-import { getAllPackages } from "../../api/packages";
-import PackagesList from ".";
-import { mockPoints, pointsKeys } from "../../api/models/mocks";
+import axios from "../services/axios";
+import { getAllPackages } from "../api/packages";
+import PackagesList from "../app/PackagesList";
+import { mockPoints, pointsKeys } from "../api/models/mocks";
 
 const component = PackagesList;
 

@@ -16,14 +16,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.lucasdmandrade.geolocationmobile",
       "infoPlist": {
-        "uibackgroundmodes": [
-          "location",
-          "fetch"
-        ],
-        "nslocationalwaysusagedescription": "text"
+        "UIBackgroundModes": ["location", "fetch"]
       }
     },
     "android": {
@@ -38,15 +32,6 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": [
-      "expo-router",
-      [
-        "expo-location",
-        {
-          "locationAlwaysAndWhenInUsePermission": "Allow geolocationMobile to use your location."
-        }
-      ]
-    ],
     "extra": {
       "router": {
         "origin": false

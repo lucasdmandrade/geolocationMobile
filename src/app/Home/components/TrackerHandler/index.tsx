@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useEffect, useMemo, useState } from "react";
-import { Alert, StyleSheet, Switch, Text, View } from "react-native";
+import { StyleSheet, Switch, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import SquareContainer from "../../../../components/SquareContainer";
 import { colors, opacity } from "../../../../styles/colors";

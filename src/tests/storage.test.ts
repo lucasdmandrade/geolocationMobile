@@ -5,8 +5,12 @@ jest.mock("@react-native-async-storage/async-storage", () =>
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import MockAdapter from "axios-mock-adapter";
 import axios from "axios";
-import { setPoint, getAllPoints, sendStoragedPoints } from "./";
-import { LocationPoint } from "../../api/models";
+import {
+  setPoint,
+  getAllPoints,
+  sendStoragedPoints,
+} from "../services/storage";
+import { LocationPoint } from "../api/models";
 
 interface StorageMockLocationPoint {
   id: string;
