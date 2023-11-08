@@ -2,7 +2,7 @@ import React, { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { StyleSheet, Switch, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import SquareContainer from "../../../../components/SquareContainer";
-import { colors, opacity } from "../../../../styles/colors";
+import { colors } from "../../../../styles/colors";
 import {
   UPDATE_LOCATION_TASK,
   requestPermissions,
@@ -27,7 +27,7 @@ const TrackerHandler: FC = () => {
       timestampOptions.map((timestampOption, key) =>
         key === squareSelectedIndex
           ? {
-              background: colors.ligthGreen + opacity[10],
+              background: colors.ligtherGreen,
               border: colors.ligthGreen,
             }
           : { background: "transparent", border: colors.gray }
