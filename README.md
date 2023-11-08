@@ -43,7 +43,7 @@ Certifique-se de que o seu dispositivo/emulador tenha as permissões de localiza
 
 ### 5. Testes
 
-Criei comandos para facilitar o uso dos testes, rode os teste executando:
+Criei comandos para simplificar o processo de execução dos testes. Para rodar os testes, basta executar os seguintes comandos:
 
 ```
 yarn test
