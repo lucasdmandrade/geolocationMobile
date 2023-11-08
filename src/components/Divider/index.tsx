@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { View, StyleSheet } from "react-native";
+import { colors } from "../../styles/colors";
 
 const Divider: FC = () => <View style={styles.divider} />;
 
@@ -10,6 +11,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 0,
     borderTopWidth: 1,
-    borderTopColor: "gray",
+    borderTopColor: colors.gray,
   },
 });

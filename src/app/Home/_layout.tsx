@@ -1,6 +1,5 @@
 import { Link, Slot } from "expo-router";
 import { View, Text, StyleSheet } from "react-native";
-import Constants from "expo-constants";
 import { colors } from "../../styles/colors";
 
 export default function HomeLayout() {

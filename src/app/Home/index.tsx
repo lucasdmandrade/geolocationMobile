@@ -10,6 +10,7 @@ import { colors } from "../../styles/colors";
 const Home = () => {
   useFocusEffect(() => {
     if (osName === "iOS") return;
+
     StatusBar.setBackgroundColor(colors.darkerBlue);
     StatusBar.setBarStyle("light-content");
   });

@@ -9,7 +9,7 @@ import { getNetworkStateAsync } from "expo-network";
 import { defineTask } from "expo-task-manager";
 import { v4 as uuidv4 } from "uuid";
 import { newPoint } from "../../api/packages";
-import { getAllPoints, sendStoragedPoints, setPoint } from "../storage";
+import { sendStoragedPoints, setPoint } from "../storage";
 
 export const UPDATE_LOCATION_TASK = "Update_Location";
 
@@ -49,8 +49,6 @@ defineTask<UpdateLocation>(UPDATE_LOCATION_TASK, async ({ error, data }) => {
       time: new Date(),
     };
 
-    console.log(point);
-
     if (isConnected) {
       await sendStoragedPoints();
 
@@ -72,7 +70,6 @@ export const stopUpdateLocation = async () =>
   await stopLocationUpdatesAsync(UPDATE_LOCATION_TASK);
 
 export const requestPermissions = async (timeInterval: number) => {
-  console.log("aqui");
   const backgroundPermissions = await getBackgroundPermissionsAsync();
   if (backgroundPermissions.granted) return;
 
@@ -83,9 +80,7 @@ export const requestPermissions = async (timeInterval: number) => {
     const { status: backgroundStatus } =
       await requestBackgroundPermissionsAsync();
 
-    console.log("aqui2");
     if (backgroundStatus === "granted") {
-      console.log("aqui");
       await startUpdateLocation(timeInterval);
     }
   }

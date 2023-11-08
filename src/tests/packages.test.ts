@@ -1,8 +1,6 @@
 import MockAdapter from "axios-mock-adapter";
 import { getAllPackages, getPackage, newPoint } from "../api/packages"; // Importe suas funções do arquivo real
-import { LocationPoint } from "../api/models";
 import axios from "../services/axios";
-import { AxiosError } from "axios";
 
 describe("Testes das funções de API", () => {
   let mock: MockAdapter;

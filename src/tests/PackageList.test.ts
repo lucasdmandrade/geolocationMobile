@@ -1,7 +1,10 @@
+jest.mock("@react-native-async-storage/async-storage", () =>
+  require("@react-native-async-storage/async-storage/jest/async-storage-mock")
+);
+
 import MockAdapter from "axios-mock-adapter";
 import { act, render, waitFor } from "@testing-library/react-native";
 import axios from "../services/axios";
-import { getAllPackages } from "../api/packages";
 import PackagesList from "../app/PackagesList";
 import { mockPoints, pointsKeys } from "../api/models/mocks";
 
