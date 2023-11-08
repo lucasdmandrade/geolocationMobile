@@ -1,6 +1,6 @@
 # Projeto GeolocationMobile
 
-Bem-vindo ao guia do projeto Expo Go que combina Expo Go e TypeScript, além de usar local storage, background tasks, serviços de localização e ter as principais features cobertas por testes unitários usando Jest e a React Testing Library
+Bem-vindo ao guia do projeto GeolocationMobile que combina Expo Go e TypeScript, além de usar local storage, background tasks, serviços de localização e ter as principais features cobertas por testes unitários usando Jest e a React Testing Library
 
 ## Iniciando
 
@@ -39,7 +39,7 @@ yarn start
 
 ### 4. Gerenciamento de Permissões
 
-Certifique-se de que o seu dispositivo/emulador tenha as permissões de localização e backgroundTask liberadas. Isso é necessário devido ao uso das bibliotecas`expo-location expo-background-fetch expo-task-manager`.
+Certifique-se de que seu dispositivo/emulador tenha as permissões de localização e segundo plano liberadas. Isso é necessário devido ao uso das bibliotecas `expo-location expo-background-fetch expo-task-manager`.
 
 ### 5. Testes
 
