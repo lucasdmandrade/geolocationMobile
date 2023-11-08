@@ -4,6 +4,7 @@ import {
   requestBackgroundPermissionsAsync,
   startLocationUpdatesAsync,
   stopLocationUpdatesAsync,
+  getBackgroundPermissionsAsync,
 } from "expo-location";
 import { getNetworkStateAsync } from "expo-network";
 import { defineTask } from "expo-task-manager";
@@ -74,6 +75,9 @@ export const stopUpdateLocation = async () =>
   await stopLocationUpdatesAsync(UPDATE_LOCATION_TASK);
 
 export const requestPermissions = async (timeInterval: number) => {
+  const backgroundPermissions = await getBackgroundPermissionsAsync();
+  if (backgroundPermissions.granted) return;
+
   const { status: foregroundStatus } =
     await requestForegroundPermissionsAsync();
 
