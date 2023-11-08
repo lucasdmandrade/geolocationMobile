@@ -10,7 +10,7 @@ Clone este repositório para o seu sistema executando o seguinte comando:
 
 ```
 git clone https://github.com/lucasdmandrade/geolocationMobile
-cd seu-repositorio
+cd geolocationMobile
 ```
 
 ### 2. Instale as Dependências
