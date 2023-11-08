@@ -84,7 +84,14 @@ const TrackerHandler: FC = () => {
               onPress={() => setSquareSelectedIndex(key)}
             >
               <SquareContainer colors={squaresColors[key]}>
-                <Text style={styles.title}>{timestampOption}s</Text>
+                <Text
+                  style={[
+                    styles.title,
+                    { fontWeight: key === squareSelectedIndex ? "600" : "400" },
+                  ]}
+                >
+                  {timestampOption}s
+                </Text>
               </SquareContainer>
             </TouchableOpacity>
           ))}
