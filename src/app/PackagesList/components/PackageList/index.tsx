@@ -80,7 +80,13 @@ const PackageList = () => {
     fetchStoragedPoints();
   }, []);
 
-  return <FlatList data={orderedPackages} renderItem={renderItem} />;
+  return (
+    <FlatList
+      data={orderedPackages}
+      renderItem={renderItem}
+      keyExtractor={({ id }, index) => `package-${id}-${index}`}
+    />
+  );
 };
 
 export default PackageList;

@@ -3,6 +3,8 @@
     "name": "geolocationMobile",
     "slug": "geolocationmobile",
     "scheme": "geolocationmobile",
+    "platforms": ["ios", "android"],
+    "privacy": "public",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -12,22 +14,23 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
+      "supportsTablet": true,
       "infoPlist": {
-        "UIBackgroundModes": ["location", "fetch"]
+        "UIBackgroundModes": [
+          "location",
+          "fetch"
+        ],
+        "NSLocationAlwaysUsageDescription": "Precisamos de sua autorização para acessar sua localização em segundo plano."
       }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
-    },
-    "androidStatusBar": {
-      "backgroundColor": "#C2185B"
+      },
+      "package": "com.lucasdmandrade.geolocationmobile"
     },
     "web": {
       "favicon": "./assets/favicon.png"

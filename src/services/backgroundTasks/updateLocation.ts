@@ -1,4 +1,3 @@
-import { getStatusAsync, BackgroundFetchResult } from "expo-background-fetch";
 import {
   requestForegroundPermissionsAsync,
   requestBackgroundPermissionsAsync,
@@ -52,16 +51,14 @@ defineTask<UpdateLocation>(UPDATE_LOCATION_TASK, async ({ error, data }) => {
 
     console.log(point);
 
-    // if (isConnected) {
-    //   await sendStoragedPoints();
+    if (isConnected) {
+      await sendStoragedPoints();
 
-    //   return await newPoint(point);
-    // }
+      return await newPoint(point);
+    }
 
-    //return await setPoint(point);
+    return await setPoint(point);
   }
-
-  return BackgroundFetchResult.NewData;
 });
 
 export const startUpdateLocation = async (timeInterval: number) =>
@@ -75,6 +72,7 @@ export const stopUpdateLocation = async () =>
   await stopLocationUpdatesAsync(UPDATE_LOCATION_TASK);
 
 export const requestPermissions = async (timeInterval: number) => {
+  console.log("aqui");
   const backgroundPermissions = await getBackgroundPermissionsAsync();
   if (backgroundPermissions.granted) return;
 
@@ -85,7 +83,9 @@ export const requestPermissions = async (timeInterval: number) => {
     const { status: backgroundStatus } =
       await requestBackgroundPermissionsAsync();
 
+    console.log("aqui2");
     if (backgroundStatus === "granted") {
+      console.log("aqui");
       await startUpdateLocation(timeInterval);
     }
   }
