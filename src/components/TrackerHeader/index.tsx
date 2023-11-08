@@ -1,18 +1,28 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { colors } from "../../styles/colors";
+import Diamond from "../Icons/Diamond/indedex";
 
 const Home = () => (
   <View style={styles.container}>
-    <Text style={styles.title}>My GPS - Tracking</Text>
+    <Diamond />
 
-    <Text style={styles.subtitle}>online</Text>
+    <View style={styles.titleContainer}>
+      <Text style={styles.title}>My GPS - Tracking</Text>
+
+      <Text style={styles.subtitle}>online</Text>
+    </View>
   </View>
 );
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: "row",
     padding: 24,
+  },
+  titleContainer: {
+    flexDirection: "column",
+    marginLeft: 15,
   },
   title: {
     fontSize: 20,
