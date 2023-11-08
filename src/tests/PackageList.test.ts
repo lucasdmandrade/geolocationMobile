@@ -1,5 +1,5 @@
 import MockAdapter from "axios-mock-adapter";
-import { render } from "@testing-library/react-native";
+import { act, render, waitFor } from "@testing-library/react-native";
 import axios from "../services/axios";
 import { getAllPackages } from "../api/packages";
 import PackagesList from "../app/PackagesList";
@@ -7,7 +7,7 @@ import { mockPoints, pointsKeys } from "../api/models/mocks";
 
 const component = PackagesList;
 
-describe("Testes das funções de API", () => {
+describe("PackagesList rendedr tests", () => {
   let mock: MockAdapter;
 
   beforeEach(() => {
@@ -18,15 +18,19 @@ describe("Testes das funções de API", () => {
     mock.restore();
   });
 
-  it("getPackage deve retornar os dados corretos", async () => {
-    mock.onGet("/points").reply(200, pointsKeys);
+  it("PackagesList should be render", async () => {
+    act(() => {
+      const getall = mock
+        .onGet("/points")
+        .reply(200, { keys: [mockPoints[0].points.id] });
 
-    mockPoints.forEach((mockPoint) => {
-      mock.onGet(`/points/${mockPoint.points.id}`).reply(200, mockPoint.points);
+      const get = mock
+        .onGet(`/points/${mockPoints[0].points.id}`)
+        .reply(200, mockPoints[0]);
     });
 
-    const tree = render(component()).toJSON();
+    const root = await waitFor(() => render(component()));
 
-    expect(tree).toMatchSnapshot();
+    expect(root).toMatchSnapshot();
   });
 });
