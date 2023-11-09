@@ -79,10 +79,13 @@ describe("Packages API expects", () => {
 
   it("newPoint should create point with correct data", async () => {
     mock.onPost(`/points/${locationPoint.id}`).reply(200);
+    mock.onGet(`/points/${locationPoint.id}`).reply(200, locationPoint);
 
     await newPoint(locationPoint);
 
-    await getPackage(locationPoint.id);
+    const result = await getPackage(locationPoint.id);
+
+    expect(result).toEqual(locationPointResponse);
   });
 
   it("newPoint should handle errors correctly", async () => {
