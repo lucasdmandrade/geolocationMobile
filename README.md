@@ -62,3 +62,33 @@ Este projeto é distribuído sob a licença [MIT](LICENSE). Sinta-se à vontade 
 ---
 
 Este README serve como um guia detalhado para executar este projeto. Para obter informações adicionais sobre configuração e uso, consulte a documentação oficial do Expo e das bibliotecas relevantes.
+
+---
+
+## Considerações
+
+As tecnologias foram cuidadosamente escolhidas para atender às necessidades do projeto e ao contexto. Optou-se por utilizar React Native e Expo Go devido à impossibilidade de emular para iOS, uma vez que o MacBook estava indisponível durante o desenvolvimento. A escolha do Expo também se justifica pela sua agilidade e ambiente amigável para desenvolvedores.
+
+Além disso, buscou-se demonstrar o comprometimento com a qualidade do código e do aplicativo, investindo na implementação de testes. Utilizaram-se testes de snapshot para garantir a integridade da interface, testes das principais funções para verificar o comportamento esperado e testes de integrações nativas para assegurar o funcionamento adequado das características específicas do Expo.
+
+No que diz respeito ao design, utilizou-se o modelo como referência, com o principal objetivo de oferecer uma experiência de usuário eficaz e funcional.
+
+É importante destacar que, devido às limitações do Expo Go, algumas funcionalidades em segundo plano não podem ser testadas. No entanto, foram realizadas todas as configurações necessárias para o projeto.
+
+Caso haja alguma dúvida ou feedback, não hesitem em entrar em contato.
+
+---
+
+## Aprofundamento em tecnologias
+
+Daqui para frente, estou argumentando as escolhas técnicas, mas é importante ressaltar que o principal motivador de cada tomada de decisão foi o contexto.
+
+Como já dito, utilizei o Expo Go por estar impossibilitado de emular para iOS, sendo essa a única alternativa. Dados os requisitos nativos, o React Native CLI é uma escolha mais consistente. Apesar das integrações do Expo com serviços nativos serem simples, elas apresentam muitas inconsistências e dificuldades de manutenção. Então, nesse requisito, fui forçado a fazer uso dessa tecnologia e isso causou outras escolhas.
+
+Optei por armazenar os pontos localmente usando o Async Storage. Além de sua facilidade de integração graças ao Expo, ele apresenta um baixo custo de uso e processamento em comparação com as alternativas mais robustas. Vale ressaltar que, com o devido tempo e consequentemente fora do Expo (usando o React Native CLI), minha primeira escolha seria um banco NoSQL local, como o Realm, por exemplo. Além disso, seria possível usar o MKKV devido à simplicidade dos dados, sendo uma solução moderna e possivelmente a mais performática atualmente, embora não sendo ideal por ser projetada principalmente para dados primitivos.
+
+Os testes foram realizados com o Jest, testing-library/react-native e axios-mock-adapter. O Jest é a biblioteca mais consistentemente utilizada, sendo inclusive padrão no React, a testing-library/react-native por melhorar a usabilidade dos testes de renderização e o axios-mock-adapter por ser a forma mais ágil de simular requisições.
+
+Além disso, optei por usar TypeScript no projeto para aumentar a qualidade do código e garantir maior precisão nos testes.
+
+Utilizei a biblioteca UUID, por ser a mais consistente atualmente e referenciada na maioria dos casos.
