@@ -20,7 +20,7 @@ interface StorageMockLocationPoint {
   time: string;
 }
 
-describe("Teste das funções relacionadas a AsyncStorage", () => {
+describe("Storage tests", () => {
   const mockLocationPoint: LocationPoint = {
     id: "1",
     latitude: 123.456,
@@ -48,14 +48,14 @@ describe("Teste das funções relacionadas a AsyncStorage", () => {
     jest.restoreAllMocks();
   });
 
-  it("setPoint deve armazenar um ponto corretamente", async () => {
+  it("setPoint should store data point correctly", async () => {
     await setPoint(mockLocationPoint);
     const storedValue = await AsyncStorage.getItem(mockLocationPoint.id);
 
     expect(JSON.parse(storedValue || "")).toEqual(storageMockLocationPoint);
   });
 
-  it("getAllPoints deve retornar os pontos armazenados", async () => {
+  it("getAllPoints should return the stored points", async () => {
     await setPoint(mockLocationPoint);
     const points = await getAllPoints();
 
@@ -63,7 +63,7 @@ describe("Teste das funções relacionadas a AsyncStorage", () => {
     expect(points[0]).toEqual(storageMockLocationPoint);
   });
 
-  it("sendStoragedPoints deve enviar pontos e removê-los", async () => {
+  it("sendStoragedPoints should send data and remove them", async () => {
     await setPoint(mockLocationPoint);
     const spyMultiRemove = jest.spyOn(AsyncStorage, "multiRemove");
 

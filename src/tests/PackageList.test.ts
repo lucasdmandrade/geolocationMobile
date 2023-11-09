@@ -10,7 +10,7 @@ import { mockPoints, pointsKeys } from "../api/models/mocks";
 
 const component = PackagesList;
 
-describe("PackagesList rendedr tests", () => {
+describe("PackagesList render tests", () => {
   let mock: MockAdapter;
 
   beforeEach(() => {

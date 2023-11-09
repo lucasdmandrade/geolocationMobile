@@ -2,7 +2,7 @@ import MockAdapter from "axios-mock-adapter";
 import { getAllPackages, getPackage, newPoint } from "../api/packages"; // Importe suas funções do arquivo real
 import axios from "../services/axios";
 
-describe("Testes das funções de API", () => {
+describe("Packages API expects", () => {
   let mock: MockAdapter;
 
   const mockedKeysData = { keys: ["package1", "package2"] };
@@ -31,7 +31,7 @@ describe("Testes das funções de API", () => {
     mock.restore();
   });
 
-  it("getAllPackages deve retornar os dados corretos", async () => {
+  it("getAllPackages should return the correct data", async () => {
     mock.onGet("/points").reply(200, mockedKeysData);
 
     const result = await getAllPackages();
@@ -39,7 +39,7 @@ describe("Testes das funções de API", () => {
     expect(result).toEqual(mockedKeysData);
   });
 
-  it("getAllPackages deve tratar erros corretamente", async () => {
+  it("getAllPackages should handle errors correctly", async () => {
     mock.onGet("/points").reply(500, "Erro interno do servidor");
 
     try {
@@ -53,7 +53,7 @@ describe("Testes das funções de API", () => {
     }
   });
 
-  it("getPackage deve retornar os dados corretos", async () => {
+  it("getPackage should return the correct data", async () => {
     mock.onGet(`/points/${locationPoint.id}`).reply(200, locationPoint);
 
     const result = await getPackage(locationPoint.id);
@@ -61,7 +61,7 @@ describe("Testes das funções de API", () => {
     expect(result).toEqual(locationPointResponse);
   });
 
-  it("getPackage deve tratar erros corretamente", async () => {
+  it("getPackage should handle errors correctly", async () => {
     mock
       .onGet(`/points/${locationPoint.id}`)
       .reply(404, "Pacote não encontrado");
@@ -77,13 +77,15 @@ describe("Testes das funções de API", () => {
     }
   });
 
-  it("newPoint deve chamar a API corretamente", async () => {
+  it("newPoint should create point with correct data", async () => {
     mock.onPost(`/points/${locationPoint.id}`).reply(200);
 
     await newPoint(locationPoint);
+
+    await getPackage(locationPoint.id);
   });
 
-  it("newPoint deve tratar erros corretamente", async () => {
+  it("newPoint should handle errors correctly", async () => {
     mock
       .onPost(`/points/${locationPoint.id}`)
       .reply(500, "Erro interno do servidor");
